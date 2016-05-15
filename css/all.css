@@ -396,10 +396,10 @@ input#delivery {
 .headerfade,
 .videofade {
 	width: 100%;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-	-khtml-opacity: 0;
-	-moz-opacity: 0;
-	opacity: 0;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	-khtml-opacity: .9;
+	-moz-opacity: .9;
+	opacity: .9;
 	height: 100%;
 	top: 0;
 	position: absolute;
