@@ -3604,3 +3604,97 @@ pre .clojure .title {
 pre .deletion {
   color: #dc322f;
 }
+#about{
+	height:100%
+}
+#about{
+	top:0;left:0
+}
+#about{
+	width:100%
+}
+#about{
+	position:fixed
+}
+#about{
+	background:rgba(17,26,35,0)
+}
+#about{
+	display:none;
+	text-align:center;line-height:100%;
+	overflow:scroll;
+	z-index:30
+}
+#about #about-card{
+	position:relative;
+	top:-1000px;
+	display:block;
+	background:#fff;
+	max-width:400px;
+	margin:0 auto;
+	border-radius:3px;padding:30px 0;
+	-webkit-box-shadow:0 0 5px rgba(0,0,0,.5);
+	-moz-box-shadow:0 0 5px rgba(0,0,0,.5);
+	box-shadow:0 0 5px rgba(0,0,0,.5)
+}
+#about #about-card #about-btn-close{
+	position:absolute;top:15px;
+	right:15px;color:#9eabb3;
+	cursor:pointer
+}
+#about #about-card #about-btn-close:hover{
+	color:#738691
+}
+#about #about-card #about-card-picture{
+	margin-bottom:15px
+}
+#about #about-card #about-card-name{
+	margin-top:0;
+	margin-bottom:20px
+}
+#about #about-card #about-card-bio{
+	padding:0 30px;margin:0 0 30px
+}
+#about #about-card #about-card-job,#about #about-card #about-card-location{
+	display:inline-block;
+	vertical-align:top
+}
+#about #about-card #about-card-bio,#about #about-card #about-card-job,#about #about-card #about-card-location{
+	font-size:1.5rem;
+	line-height:1.85em;
+	font-weight:400;
+	color:#424242
+}
+#about #about-card{
+	width:90%
+}
+#about #about-card #about-card-job,#about #about-card #about-card-location{
+	display:block;width:calc(100% - 60px);
+	padding:0 30px
+}
+#about #about-card #about-card-picture{
+	width:90px;
+	height:90px;
+	border-radius:45px
+}
+#about #about-card #about-card-job{
+	margin-bottom:15px
+}
+#about #about-card{
+	width:80%
+}
+#about #about-card #about-card-picture{
+	width:110px;
+	height:110px;
+	border-radius:55px
+}
+#about #about-card #about-card-job,#about #about-card #about-card-location{
+	display:inline-block;
+	width:calc((100% / 2) - 48px)
+}
+#about #about-card #about-card-job{
+	padding:0 15px 0 30px
+}
+#about #about-card #about-card-location{
+	padding:0 30px 0 15px
+}
