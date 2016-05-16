@@ -44,7 +44,7 @@ $(document).ready(function($) {
 		$(".animsition").animsition({
 
 			inClass               :   'fade-in',
-			outClass              :   'initial',
+			outClass              :   'fade-out-down-sm',
 			inDuration            :    900,
 			outDuration           :    800,
 			linkElement           :   '.animsition-link',
