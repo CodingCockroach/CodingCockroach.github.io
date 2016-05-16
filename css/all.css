@@ -812,7 +812,9 @@ button.navbar-toggle .icon-bar {
 	-o-transition: all ease .2s;
 	transition: all ease .2s;
 }
-html.sb-init.sb-active.sb-active-right,
+html.sb-init.sb-active.sb-active-right{
+	cursor: pointer;
+}
 html.sb-init.sb-active.sb-active-right #featured a,
 html.sb-init.sb-active.sb-active-right ul.filters li p,
 html.sb-init.sb-active.sb-active-right #projects .filter-item div a {
