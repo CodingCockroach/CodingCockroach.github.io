@@ -3610,7 +3610,6 @@ pre .deletion {
 	width:100%;
 	position:fixed;
 	background:rgba(17,26,35,0);
-	display:none;
 	text-align:center;
 	line-height:100%;
 	overflow:scroll;
