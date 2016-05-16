@@ -55,10 +55,10 @@
     <![endif]-->
 
     <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
-    <style type="text/css">
-        #bg111{ display: none;  position: absolute;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background-color: black;  z-index:1001;  -moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);}
+<style type="text/css">
+        #bg{ display: none;  position: absolute;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background-color: black;  z-index:1001;  -moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);}
         #about{display: none;  position: absolute;  top: 25%;  left: 22%;  width: 53%;  height: 49%;  padding: 8px;  border: 8px solid #E8E9F7;  background-color: white;  z-index:1002;  overflow: auto;}
-    </style>
+</style>
 
 </head>
 
@@ -308,23 +308,9 @@
         </div>
 </footer>
 <!-- ============================ END Footer =========================== -->
-<div id="bg111"></div>
-<div id="about">
-    <div id="about-card">
-        <input id="btnclose" type="button" value="Close" onclick="hidediv();"/>
-        </div>
-            <img id="about-card-picture" src="/img/logo.png"/>
-            <h4 id="about-card-name">Kaede Akatsuki</h4>
-            <h5 id="about-card-bio"><p>我叫小风（Kaede）<br>爱好是程序设计、日本语、ACG<br>具体介绍可以参考 <a href="/about">About</a></p></h5>
-            <h5 id="about-card-job">
-                <br/>
-                <p>Android 开发</p>
-            </h5>
-            <h5 id="about-card-location">
-                <br/>
-                妖都
-            </h5>
-    </div>
+<div id="bg"></div>
+<div id="about">测试
+<input id="btnclose" type="button" value="Close" onclick="hidediv();"/>
 </div>
 
 <!-- Load our scripts -->
@@ -364,13 +350,13 @@
 <!-- DIV CSS遮罩 -->
 <script language="javascript" type="text/javascript">
 function showdiv() {            
-    document.getElementById("bg").style.display ="block";
-    document.getElementById("about").style.display ="block";
-}
+            document.getElementById("bg").style.display ="block";
+            document.getElementById("about").style.display ="block";
+        }
 function hidediv() {
-    document.getElementById("bg").style.display ='none';
-    document.getElementById("about").style.display ='none';
-}
+            document.getElementById("bg").style.display ='none';
+            document.getElementById("about").style.display ='none';
+        }
 </script>
 
 </body>
