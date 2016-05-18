@@ -396,17 +396,10 @@ input#delivery {
 .headerfade,
 .videofade {
 	width: 100%;
-<<<<<<< HEAD
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
 	-khtml-opacity: .9;
 	-moz-opacity: .9;
 	opacity: .9;
-=======
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-	-khtml-opacity: 0;
-	-moz-opacity: 0;
-	opacity: 0;
->>>>>>> 90cb409d5a54c7a78f0bfac3150a287c37b407a3
 	height: 100%;
 	top: 0;
 	position: absolute;
@@ -819,13 +812,9 @@ button.navbar-toggle .icon-bar {
 	-o-transition: all ease .2s;
 	transition: all ease .2s;
 }
-<<<<<<< HEAD
 html.sb-init.sb-active.sb-active-right{
 	cursor: pointer;
 }
-=======
-html.sb-init.sb-active.sb-active-right,
->>>>>>> 90cb409d5a54c7a78f0bfac3150a287c37b407a3
 html.sb-init.sb-active.sb-active-right #featured a,
 html.sb-init.sb-active.sb-active-right ul.filters li p,
 html.sb-init.sb-active.sb-active-right #projects .filter-item div a {
@@ -3616,8 +3605,4 @@ pre .clojure .title {
 }
 pre .deletion {
   color: #dc322f;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 90cb409d5a54c7a78f0bfac3150a287c37b407a3
