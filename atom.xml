@@ -4,9 +4,9 @@
   <subtitle>生活时常妥协，Coding未曾将就</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="www.CodingCockroach.com/"/>
+  <link href="blog.CodingCockroach.com/"/>
   <updated>2016-03-22T12:04:13.499Z</updated>
-  <id>www.CodingCockroach.com/</id>
+  <id>blog.CodingCockroach.com/</id>
   
   <author>
     <name>CodingCockroach@Dian</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Let&#39;s Hexo!</title>
-    <link href="www.CodingCockroach.com/2016/03/22/hexo/"/>
-    <id>www.CodingCockroach.com/2016/03/22/hexo/</id>
+    <link href="blog.CodingCockroach.com/2016/03/22/hexo/"/>
+    <id>blog.CodingCockroach.com/2016/03/22/hexo/</id>
     <published>2016-03-22T08:45:00.000Z</published>
     <updated>2016-03-22T12:04:13.499Z</updated>
     
@@ -35,16 +35,16 @@
     </summary>
     
     
-      <category term="blog" scheme="www.CodingCockroach.com/tags/blog/"/>
+      <category term="blog" scheme="blog.CodingCockroach.com/tags/blog/"/>
     
-      <category term="技术" scheme="www.CodingCockroach.com/tags/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="blog.CodingCockroach.com/tags/%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
   <entry>
     <title>看哪，这人</title>
-    <link href="www.CodingCockroach.com/2016/03/18/%E7%9C%8B%E5%93%AA%EF%BC%8C%E8%BF%99%E4%BA%BA/"/>
-    <id>www.CodingCockroach.com/2016/03/18/看哪，这人/</id>
+    <link href="blog.CodingCockroach.com/2016/03/18/%E7%9C%8B%E5%93%AA%EF%BC%8C%E8%BF%99%E4%BA%BA/"/>
+    <id>blog.CodingCockroach.com/2016/03/18/看哪，这人/</id>
     <published>2016-03-18T01:20:55.000Z</published>
     <updated>2016-03-19T07:11:31.256Z</updated>
     
@@ -58,16 +58,16 @@
     </summary>
     
     
-      <category term="随笔" scheme="www.CodingCockroach.com/tags/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="blog.CodingCockroach.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
-      <category term="blog" scheme="www.CodingCockroach.com/tags/blog/"/>
+      <category term="blog" scheme="blog.CodingCockroach.com/tags/blog/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="www.CodingCockroach.com/2016/03/18/HelloWorld/"/>
-    <id>www.CodingCockroach.com/2016/03/18/HelloWorld/</id>
+    <link href="blog.CodingCockroach.com/2016/03/18/HelloWorld/"/>
+    <id>blog.CodingCockroach.com/2016/03/18/HelloWorld/</id>
     <published>2016-03-18T01:16:37.000Z</published>
     <updated>2016-03-18T01:29:03.939Z</updated>
     
@@ -82,9 +82,9 @@
     </summary>
     
     
-      <category term="随笔" scheme="www.CodingCockroach.com/tags/%E9%9A%8F%E7%AC%94/"/>
+      <category term="随笔" scheme="blog.CodingCockroach.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
-      <category term="blog" scheme="www.CodingCockroach.com/tags/blog/"/>
+      <category term="blog" scheme="blog.CodingCockroach.com/tags/blog/"/>
     
   </entry>
   
