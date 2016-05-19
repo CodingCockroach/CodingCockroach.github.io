@@ -76,6 +76,22 @@
 	        	top: 15px;
 	        	right: 15px;
 	        }
+	        #about-picture{
+	        	position: absolute;  
+	        	left: 50%; 
+	        	margin-left: -55px; 
+			    width: 110px;
+			    height: 110px;
+			    margin-bottom: 15px;
+			    margin-left: -45px;
+	        }
+	        #about-name{
+			    text-align: center;
+	        	margin-top: 110px;
+	        }
+	        #about-learn{
+			    text-align: center;
+	        }
 	</style>
 
 </head>
@@ -85,6 +101,24 @@
 -->
 
 <body id="index" class="lightnav animsition">
+
+
+<style>
+.bizmail_loginpanel{font-size:12px;width:300px;height:auto;border:1px solid #cccccc;background:#ffffff;}
+.bizmail_LoginBox{padding:10px 15px;}
+.bizmail_loginpanel form{margin:0;padding:0;}
+.bizmail_loginpanel input.text{font-size:12px;width:100px;height:20px;margin:0 2px;border:1px solid #C3C3C3;border-color:#7C7C7C #C3C3C3 #C3C3C3 #9A9A9A;}
+.bizmail_loginpanel .bizmail_column{height:28px;}
+.bizmail_loginpanel .bizmail_column .bizmail_inputArea{float:left;width:240px;}
+.bizmail_loginpanel .bizmail_column span{font-size:12px;word-wrap:break-word;margin-left: 2px;line-height:200%;}
+.bizmail_loginpanel .bizmail_SubmitArea{margin-left:30px;clear:both;}
+.bizmail_loginpanel select{width:110px;height:20px;margin:0 2px;}
+</style>
+<script type="text/javascript" src="http://exmail.qq.com/zh_CN/htmledition/js_biz/outerlogin.js"  charset="gb18030"></script>
+<script type="text/javascript">
+writeLoginPanel({domainlist:"codingcockroach.com", mode:"horizontal"});
+</script>
+
 
     <!-- ============================ Off-canvas navigation =========================== -->
     <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
@@ -324,8 +358,22 @@
 <!-- ============================ END Footer =========================== -->
 <div id="bg"></div>
 <div id="about">
+	<img id="about-picture" src="/img/favicon.ico"/>
 	<img id="about-close" src="/img/close-black.png" onclick="hidediv();"/>
-
+	<h4 id="about-name">
+		CodingCockroach@Dian<br>葛弘康
+	</h4>
+	<h5 id="about-learn">
+		<p>
+			华中科技大学
+			<br>
+			电子信息与通信学院
+			<br>
+			Dian团队
+			<br>
+			C语言
+		</p>
+	</h5>
 </div>
 
 <!-- Load our scripts -->
