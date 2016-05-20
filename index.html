@@ -55,15 +55,25 @@
 
     <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
 	<style type="text/css">
+        #icon {
+          display: inline-block;
+          font-size: .9em;
+        }
+        #lnk {
+          font-size: .8em;
+          line-height: 3em;
+          color: #a9a9a9;
+          text-decoration: none;
+        }
 	    #bg{ display: none;  position: absolute;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background-color: black;  z-index:1001;  -moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);}
 	    #about{
 	    	display: none;  
 	    	position: absolute;  
-	    	top: 25%;  
+	    	top: 20%;  
 	    	left: 50%; 
 	    	margin-left: -150px; 
 	    	width: 300px;  
-	    	background-color: #fff;  
+	    	background-color: #2c3338;  
 		    border-radius: 3px;
 		    padding: 20px 0;
 	    	z-index:1002;  
@@ -87,10 +97,125 @@
 	    #about-name{
 		    text-align: center;
 	    	margin-top: 110px;
+			color: #a9a9a9;
 	    }
 	    #about-learn{
 		    text-align: center;
 	    }
+	    #bgabout{ display: none;  position: absolute;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background-color: black;  z-index:1001;  -moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);}
+	    #aboutme{
+	    	display: none;  
+	    	position: absolute;  
+	    	top: 25%;  
+	    	left: 50%; 
+	    	margin-left: -150px; 
+	    	width: 300px;  
+	    	background-color: #fff;  
+		    border-radius: 3px;
+		    padding: 20px 0;
+	    	z-index:1002;  
+	    	box-shadow: 0 0 5px rgba(0,0,0,.5);
+	    }
+	    #aboutme-close{
+	    	position: absolute;
+	    	cursor: pointer;
+	    	top: 15px;
+	    	right: 15px;
+	    }
+	    #aboutme-picture{
+	    	position: absolute;  
+	    	left: 50%; 
+	    	margin-left: -55px; 
+		    width: 110px;
+		    height: 110px;
+		    margin-bottom: 15px;
+		    margin-left: -45px;
+	    }
+	    #aboutme-name{
+		    text-align: center;
+	    	margin-top: 110px;
+	    }
+	    #aboutme-learn{
+		    text-align: center;
+	    }
+	</style>
+
+	<style type="text/css">
+		@charset "utf-8";
+		@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+		[class*="fontawesome-"]:before {
+		  font-family: 'FontAwesome', sans-serif;
+		}
+
+		input {
+		  border: none;
+		  font-family: 'Open Sans', Arial, sans-serif;
+		  font-size: 16px;
+		  line-height: 1.5em;
+		  padding: 0;
+		  -webkit-appearance: none;
+		}
+
+		after { clear: both; }
+
+		#login {
+		  width: 300px;
+		}
+
+		#login form {
+		  margin: auto;
+		  padding: 0px 22px 5px 22px;
+		  width: 100%;
+		  border-radius: 5px;
+		}
+
+		#login form span {
+		  background-color: #363b41;
+		  border-radius: 3px 0px 0px 3px;
+		  border-right: 3px solid #434a52;
+		  color: #606468;
+		  display: block;
+		  float: left;
+		  line-height: 50px;
+		  text-align: center;
+		  width: 25px;
+		  height: 50px;
+		}
+
+		#login form input[type="text"] {
+		  background-color: #3b4148;
+		  border-radius: 0px 3px 3px 0px;
+		  color: #a9a9a9;
+		  margin-bottom: 1em;
+		  padding: 0 16px;
+		  width: 230px;
+		  height: 50px;
+		}
+
+		#login form input[type="password"] {
+		  background-color: #3b4148;
+		  border-radius: 0px 3px 3px 0px;
+		  color: #a9a9a9;
+		  margin-bottom: 1em;
+		  padding: 0 16px;
+		  width: 230px;
+		  height: 50px;
+		}
+
+		#login form input[type="submit"] {
+		  background: #b5cd60;
+		  border: 0;
+		  width: 100%;
+		  height: 40px;
+		  border-radius: 3px;
+		  color: white;
+		  cursor: pointer;
+		  transition: background 0.3s ease-in-out;
+		}
+		#login form input[type="submit"]:hover {
+		  background: #16aa56;
+		}
 	</style>
 </head>
 
@@ -154,11 +279,10 @@
                     <!-- Info-bar -->
                     <nav>
                         <ul class="nav">
-                            <li><a href="/" class="animsition-link">CodingCockroach@Dian</a></li>
-                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
-                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            <li><a href="javascript:showdivmail()">CodingCockroach@Dian</a></li>
+                            <li><a href="https://github.com/CodingCockroach" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            <li><a href="https://twitter.com/hnyyghk/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
                             <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
-                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
                             <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
                             <li class="nolink"><span>Welcome!</span></li>
                         </ul>
@@ -320,16 +444,20 @@
 	    <div class="container">
 	            <div class="copy">
 	                <p>
-	                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By CodingCockroach@Dian. All Rights Reserved.<br />Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a>,Thanks.
+	                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By CodingCockroach@Dian. All Rights Reserved.<br />Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a>,Thanks.<br />
+						<span id="busuanzi_container_site_uv" style='display:none'>您是光临本站的第<span id="busuanzi_value_site_uv"></span>个小伙伴</span>
+						Total <span id="busuanzi_value_site_pv"></span> views.
+						您是xxx的第<span id="busuanzi_value_site_uv"></span>个小伙伴
+						<span id="busuanzi_value_page_pv"></span> Hits
 					</p>
 	            </div>
+
 	            <div class="social">
 	                <ul>
-	                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+	                    <li><a href="https://github.com/CodingCockroach" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
 	                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
 	                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
-	                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
-	                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+	                    <li><a href="http://weibo.com/CodingCockroach" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
 	                </ul>
 	            </div>
 	            <div class="clearfix"> </div>
@@ -337,14 +465,14 @@
 	</footer>
 	<!-- ============================ END Footer =========================== -->
 	<!-- =============================== About ============================= -->
-	<div id="bg"></div>
-	<div id="about">
-		<img id="about-picture" src="/img/favicon.ico"/>
-		<img id="about-close" src="/img/close-black.png" onclick="hidediv();"/>
-		<h4 id="about-name">
+	<div id="bgabout"></div>
+	<div id="aboutme">
+		<img id="aboutme-picture" src="/img/favicon.ico"/>
+		<img id="aboutme-close" src="/img/close-black.png" onclick="hidediv();"/>
+		<h4 id="aboutme-name">
 			CodingCockroach@Dian<br>葛弘康
 		</h4>
-		<h5 id="about-learn">
+		<h5 id="aboutme-learn">
 			<p>
 				华中科技大学
 				<br>
@@ -357,6 +485,10 @@
 		</h5>
 	</div>
 	<!-- =========================== END About ============================= -->
+	<!-- =============================== Mail ============================== -->
+	<script type="text/javascript" src="/js/outerlogin.js"  charset="gb18030"></script>
+	<script type="text/javascript">writeLoginPanel({domainlist:"codingcockroach.com", mode:"horizontal"});</script>
+	<!-- =========================== END Mail ============================= -->
 	<!-- Load our scripts -->
 	<!-- Resizable 'on-demand' full-height hero -->
 	<script type="text/javascript">
@@ -393,6 +525,15 @@
 	<!-- DIV CSS遮罩 -->
 	<script language="javascript" type="text/javascript">
 	function showdiv() {            
+	            document.getElementById("bgabout").style.display ="block";
+	            document.getElementById("aboutme").style.display ="block";
+
+	            document.getElementById("intro").style.display ='none';
+	            document.getElementById("statement").style.display ='none';
+	            document.getElementById("footer").style.display ='none';
+	            document.getElementById("ascrail2000").style.display ='none';
+	        }
+	function showdivmail() {            
 	            document.getElementById("bg").style.display ="block";
 	            document.getElementById("about").style.display ="block";
 
@@ -402,6 +543,15 @@
 	            document.getElementById("ascrail2000").style.display ='none';
 	        }
 	function hidediv() {
+	            document.getElementById("bgabout").style.display ='none';
+	            document.getElementById("aboutme").style.display ='none';
+
+	            document.getElementById("intro").style.display ="block";
+	            document.getElementById("statement").style.display ="block";
+	            document.getElementById("footer").style.display ="block";
+	            document.getElementById("ascrail2000").style.display ="block";
+	        }
+	function hidedivmail() {
 	            document.getElementById("bg").style.display ='none';
 	            document.getElementById("about").style.display ='none';
 
@@ -411,6 +561,7 @@
 	            document.getElementById("ascrail2000").style.display ="block";
 	        }
 	</script>
-
+	<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
 </body>
 </html>
