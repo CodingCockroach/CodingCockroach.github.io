@@ -725,8 +725,26 @@ nav i.icon-basic-eye {
 	}
 
 	.navbar nav {
-		display: none
+		display: none;
 	}
+
+	.this_ua {
+		display: none!important;
+	}
+
+	.ds-sync {
+		display: none!important;
+	}
+
+	#ds-smilies-tooltip {
+		width: auto!important;
+		left: 0px!important;
+	}
+
+	.ds-smilies-tabs{
+		height: 140px!important;
+	}
+
 }
 .grey-border {
 	border-right: #333 1px solid !important;

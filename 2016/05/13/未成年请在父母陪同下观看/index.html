@@ -216,6 +216,45 @@
 		#login form input[type="submit"]:hover {
 		  background: #16aa56;
 		}
+		span.this_ua {
+		    background-color: #ccc!important;
+		    border-radius: 4px;
+		    padding: 0 5px!important;
+		    margin: 0 1px!important;
+		    border: 1px solid #BBB!important;
+		    color: #fff;
+		    text-transform: Capitalize!important;
+		    float: right!important;
+		    line-height: 18px!important;
+		}
+		.this_ua.platform.Windows{
+		    background-color: #39b3d7!important;
+		    border-color: #46b8da!important;
+		}
+		.this_ua.platform.Linux {
+		    background-color: #3A3A3A!important;
+		    border-color: #1F1F1F!important;
+		}
+		.this_ua.platform.Android {
+		    background-color: #00C47D!important;
+		    border-color: #01B171!important;
+		}
+		.this_ua.browser.Chrome{
+		    background-color: #5cb85c!important;
+		    border-color: #4cae4c!important;
+		}
+		.this_ua.browser.Firefox{
+		    background-color: #f0ad4e!important;
+		    border-color: #eea236!important;
+		}
+		.this_ua.browser.IE{
+		    background-color: #428bca!important;
+		    border-color: #357ebd!important;
+		}
+		.this_ua.browser.Opera{
+		    background-color: #d9534f!important;
+		    border-color: #d43f3a!important;
+		}
 	</style>
 </head>
 
@@ -330,118 +369,52 @@
 	<!-- ============================ Content =========================== -->
 	<section id="intro">
 	    <div class="container">
-	        <div class="row">
-	            <div class="col-md-8 col-md-offset-2 opening-statement">
-	                <div class="col-md-4">
-	                    <h3><a href="/2016/05/13/未成年请在父母陪同下观看/">未成年请在父母陪同下观看</a></h3>
-	                    <span>
-	                        <span class="post-meta">
-	      						<time datetime="2016-05-13T00:00:00.000Z" itemprop="datePublished">2016-05-13</time>
-							    | 
-							    <a href='/tags/随笔/'>随笔</a>,
-							    <a href='/tags/blog/'>blog</a>
-							</span>
-	                    </span>
-	                </div>
-	                <div class="col-md-8">
-	                    <p>
-		                    最近也还是老样子，不思上进，在团队写一写代码，偶尔打打游戏。不过感觉五一放假回来课真心多，没什么时间用来总结，博客的搭建也落下了，等数理方程考试完再说吧ヽ(‘ ∇‘ )ノ。
-	                    </p>
-	                    <p class="pull-right readMore">
-	                        <a href="/2016/05/13/未成年请在父母陪同下观看/">Read More...</a>
-	                    </p>
-	                </div>
-	                <div class="clearfix"></div>
-	                <hr class="nogutter">
+	        <div class="row col-md-offset-2">
+	            <div class="col-md-8">
+	                <h1>未成年请在父母陪同下观看</h1>
+	    			<span class="post-meta">
+					    <time datetime="2016-05-13T00:00:00.000Z" itemprop="datePublished">2016-05-13</time>
+					    | 
+					    <a href='/tags/随笔/'>随笔</a>,
+					    <a href='/tags/blog/'>blog</a>
+					</span>
+					<span id="busuanzi_container_page_pv" style='display:none'>
+						 | 本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+					</span>
 	            </div>
 	        </div>
-
-	        <div class="row">
-	            <div class="col-md-8 col-md-offset-2 opening-statement">
-	                <div class="col-md-4">
-	                    <h3><a href="/2016/03/22/hexo/">Let's Hexo!</a></h3>
-	                    <span>
-	                        <span class="post-meta">
-	    						<time datetime="2016-03-22T08:45:00.000Z" itemprop="datePublished">2016-03-22</time>
-	    						| 
-	    						<a href='/tags/blog/'>blog</a>,
-	    						<a href='/tags/技术/'>技术</a>
-							</span>
-	                    </span>
-	                </div>
-	                <div class="col-md-8">
-	                    <p>
-	                        好不容易搭建起了自己的第一个个人博客，也纠结了很久是不是应该直接用CSDN，cnblogs或者自己搭wordpress，最后跟随知乎大神的脚步开始了我的Hexo征程。Hexo出自台湾大学生tommy351之手，这是一个基于Nodejs的静态博客程序。搭建完成后，它能够一键在几秒内完成上百个页面的渲染，渲染完成后也只需一条指令即可部署到 GitHub Pages, Heroku 或其他网站。
-	                    </p>
-	                    <p class="pull-right readMore">
-	                        <a href="/2016/03/22/hexo/">Read More...</a>
-	                    </p>
-	                </div>
-	                <div class="clearfix"></div>
-	                <hr class="nogutter">
-	            </div>
+	        <div class="col-md-8 col-md-offset-2">
+	      		<p>
+	      		最近也还是老样子，不思上进，在团队写一写代码，偶尔打打游戏。不过感觉五一放假回来课真心多，没什么时间用来总结，博客的搭建也落下了，等数理方程考试完再说吧ヽ(‘ ∇‘ )ノ。<br />
+	      		放假逛了逛各位菊苣的博客，发现了好多好多有趣的东西2333，让我们看看都有啥~<br />
+	      		①<a href="/2016/05/13/未成年请在父母陪同下观看/emoji/">Emoji!</a><br />
+	      		②<a href="/2016/05/13/未成年请在父母陪同下观看/ManInTheDark/">ManInTheDark</a><br />
+	      		③<a href="/2016/05/13/未成年请在父母陪同下观看/FM/">FM</a><br />
+	      		④<a href="/2016/05/13/未成年请在父母陪同下观看/anniversary/">Our Love Story</a><br />
+	      		第一个准备用来做自己域名邮箱的登陆背景，第三个是一个弹幕FM，我感觉挺好用的，大家可以试一试，同时这也是一个开源项目，地址大家可以自己看源码啦。<br />
+	      		嘿嘿嘿，第四个其实是纪念日送给妹纸的，也放上来不要见怪~
+	      		</p>
+	            <div class="clearfix"></div>
+	            <hr class="nogutter">
 	        </div>
+	        <nav class="pagination" role="pagination">
+	    		<a class="pull-right" href="/2016/03/22/hexo/">Let's Hexo! →</a>
+			</nav>
 
-	        <div class="row">
-	            <div class="col-md-8 col-md-offset-2 opening-statement">
-	                <div class="col-md-4">
-	                    <h3><a href="/2016/03/18/看哪，这人/">看哪，这人</a></h3>
-	                    <span>
-	                        <span class="post-meta">
-							    <time datetime="2016-03-18T01:20:55.000Z" itemprop="datePublished">2016-03-18</time>
-							    | 
-							    <a href='/tags/随笔/'>随笔</a>,
-							    <a href='/tags/blog/'>blog</a>
-							</span>
-	                    </span>
-	                </div>
-	                <div class="col-md-8">
-	                    <p>
-	                        人的本性人的一切来源于宇宙，组成人的所有物质宇宙里都有，也许这种叫做人类生命的物质组合宇宙里也有。生命的特征是遗传与变异，人类的文化的特征是模仿与创新。除了人自己以外，目前看来，没有什么别的东西对人感兴趣。人类除了在宇宙里存在下去以外，并无什么说得上的共同的目标。
-	                    </p>
-	                    <p class="pull-right readMore">
-	                        <a href="/2016/03/18/看哪，这人/">Read More...</a>
-	                    </p>
-	                </div>
-	                <div class="clearfix"></div>
-	                <hr class="nogutter">
-	            </div>
-	        </div>
-
-	        <div class="row">
-	            <div class="col-md-8 col-md-offset-2 opening-statement">
-	                <div class="col-md-4">
-	                    <h3><a href="/2016/03/18/HelloWorld/">Hello World</a></h3>
-	                    <span>
-	                        <span class="post-meta">
-							    <time datetime="2016-03-18T01:16:37.000Z" itemprop="datePublished">2016-03-18</time>
-							    | 
-							    <a href='/tags/随笔/'>随笔</a>,
-							    <a href='/tags/blog/'>blog</a>
-							</span>
-	                    </span>
-	                </div>
-	                <div class="col-md-8">
-	                    <p>
-	                        作为一个只会撸后台代码的人，入坑自己建立自己的个人博客是因为从知乎上看的毒文，两天的奋战总归是搭起来一个还能看的页面，用这篇文章纪念一下吧，以此共勉。
-	                    </p>
-	                    <p class="pull-right readMore">
-	                        <a href="/2016/03/18/HelloWorld/">Read More...</a>
-	                    </p>
-	                </div>
-	                <div class="clearfix"></div>
-	                <hr class="nogutter">
-	            </div>
-	        </div>
-	        <nav class="pagination" role="pagination"></nav>
-	    </div>
-	</section>
-
-	<section id="statement">
-	    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-	        <div class="row">
-	            <p>“每一个不曾起舞的日子都是对生命的辜负。”</p>
-	        </div>
+	        <div class="duoshuo">
+				<div class="ds-thread" data-thread-key="2016/05/13/未成年请在父母陪同下观看/" data-title="未成年请在父母陪同下观看" data-url="CodingCockroach.github.io/2016/05/13/未成年请在父母陪同下观看/"></div>
+				<script type="text/javascript">
+					var duoshuoQuery = {short_name:"CodingCockroach"};
+					(function() {
+						var ds = document.createElement('script');
+						ds.type = 'text/javascript';ds.async = true;
+						ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+						ds.charset = 'UTF-8';
+						(document.getElementsByTagName('head')[0] 
+						 || document.getElementsByTagName('body')[0]).appendChild(ds);
+					})();
+				</script>
+			</div>
 	    </div>
 	</section>
 	<!-- ========================= END Content ========================= -->
@@ -532,7 +505,6 @@
 	            document.getElementById("aboutme").style.display ="block";
 
 	            document.getElementById("intro").style.display ='none';
-	            document.getElementById("statement").style.display ='none';
 	            document.getElementById("footer").style.display ='none';
 	            document.getElementById("ascrail2000").style.display ='none';
 	        }
@@ -541,7 +513,6 @@
 	            document.getElementById("about").style.display ="block";
 
 	            document.getElementById("intro").style.display ='none';
-	            document.getElementById("statement").style.display ='none';
 	            document.getElementById("footer").style.display ='none';
 	            document.getElementById("ascrail2000").style.display ='none';
 	        }
@@ -550,7 +521,6 @@
 	            document.getElementById("aboutme").style.display ='none';
 
 	            document.getElementById("intro").style.display ="block";
-	            document.getElementById("statement").style.display ="block";
 	            document.getElementById("footer").style.display ="block";
 	            document.getElementById("ascrail2000").style.display ="block";
 	        }
@@ -559,11 +529,51 @@
 	            document.getElementById("about").style.display ='none';
 
 	            document.getElementById("intro").style.display ="block";
-	            document.getElementById("statement").style.display ="block";
 	            document.getElementById("footer").style.display ="block";
 	            document.getElementById("ascrail2000").style.display ="block";
 	        }
 	</script>
+
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	  var duoshuoQuery = {short_name:"CodingCockroach"};
+	  (function() {
+	    var ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+	    ds = document.createElement('script');
+	    ds.type = 'text/javascript';ds.async = true;
+	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//faisalman.github.io/ua-parser-js/src/ua-parser.js';
+	    ds.charset = 'UTF-8';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+	  })();
+	</script>
+	<!-- 多说公共JS代码 end -->
+	<script src="/js/embed-15.11.15.0.min.js"></script>
+	<script src="/js/ua-parser.min.js"></script>
+	<!-- 多说 ua-parser-js start -->
+	<script type="text/javascript">
+	  if (typeof DUOSHUO !== 'undefined')hookDUOSHUO_tp();
+	  else $('[src="/js/embed-15.11.15.js"]')[0].onload=hookDUOSHUO_tp;
+	  function hookDUOSHUO_tp(){
+	    var _D_post=DUOSHUO.templates.post
+	    DUOSHUO.templates.post=function (e,t){
+	      var rs=_D_post(e,t);
+	      if(e.post.agent&&/^Mozilla/.test(e.post.agent))rs=rs.replace(/<\/div><p>/,show_ua(e.post.agent)+'</div><p>');
+	      return rs;
+	    }
+	  }
+	  function show_ua(string){
+	    console.log(string);
+	    $.ua.set(string);
+	    var sua=$.ua;
+	    if(sua.os.version=='x86_64')sua.os.version='x64';
+	    return '<span class="this_ua browser '+sua.browser.name+'">'+sua.browser.name+' | '+sua.browser.version+'</span>'+'<span class="this_ua platform '+sua.os.name+'">'+sua.os.name+' '+sua.os.version+'</span>';
+	  }
+	</script>
+	<!-- 多说 ua-parser-js end -->
 
 	<!-- 不蒜子访问量统计 -->
 	<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
