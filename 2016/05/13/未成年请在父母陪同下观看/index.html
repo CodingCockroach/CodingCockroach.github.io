@@ -3,7 +3,7 @@
 <html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
 <!--<![endif]-->
 
 <head>
@@ -20,7 +20,7 @@
     <!-- Favicon, (keep icon in root folder) -->
     <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
     <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
-    <link rel="stylesheet" href="/css/vs.css" type="text/css">
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
 
     <!-- Custom stylesheet, (add custom styles here, always load last) -->
     <!-- Load our stylesheet for IE8 -->
@@ -50,7 +50,7 @@
     <script src="/js/html5shiv.min.js"></script>
     <script src="/js/respond.min.js"></script>
     <![endif]-->
-	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="atom.xml">
+
     <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
 	<style type="text/css">
         #icon {
@@ -278,14 +278,14 @@
                 <ul class="sb-submenu">
 	                <li><a href="/tags/技术/" class="animsition-link">技术</a></li>
 	                <li><a href="/tags/随笔/" class="animsition-link">随笔</a></li>
-	                <li><a href="/tags/blog/" class="animsition-link">Blog</a></li>
+	                <li><a href="/tags/Blog/" class="animsition-link">Blog</a></li>
                 </ul>
             </li>
 
             <li>
                 <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
-                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    <li><a target="_blank" rel="noopener" href="https://go.kieran.top">Kieran</a></li>
                 </ul>
             </li>
         </ul>
@@ -309,7 +309,7 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="javascript:showdiv()" title="Logo">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/>
+                            <img src="/img/logo.png" alt="Logo" width="35px;"/>
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -364,8 +364,8 @@
         <!-- Height spacing helper -->
         <div class="heightblock"></div>
         <!-- // End height spacing helper -->
-	</div>
-	<!-- ======================== END Hero Image ======================== -->
+        <!-- ======================== END Hero Image ======================== -->
+    </div>
 	<!-- ============================ Content =========================== -->
 	<section id="intro">
 	    <div class="container">
@@ -376,7 +376,7 @@
 					    <time datetime="2016-05-13T00:00:00.000Z" itemprop="datePublished">2016-05-13</time>
 					    | 
 					    <a href='/tags/随笔/'>随笔</a>,
-					    <a href='/tags/blog/'>Blog</a>
+					    <a href='/tags/Blog/'>Blog</a>
 					</span>
 					<span id="busuanzi_container_page_pv" style='display:none'>
 						 | 本文总阅读量<span id="busuanzi_value_page_pv"></span>次
@@ -401,45 +401,31 @@
     			<a class="pull-left" href="/2016/05/24/缓冲区溢出/" style="float: left;">← 缓冲区溢出</a>
 	    		<a class="pull-right" href="/2016/03/22/hexo/">Let's Hexo! →</a>
 			</nav>
-
-	        <div class="duoshuo">
-				<div class="ds-thread" data-thread-key="2016/05/13/未成年请在父母陪同下观看/" data-title="未成年请在父母陪同下观看" data-url="CodingCockroach.github.io/2016/05/13/未成年请在父母陪同下观看/"></div>
-				<script type="text/javascript">
-					var duoshuoQuery = {short_name:"CodingCockroach"};
-					(function() {
-						var ds = document.createElement('script');
-						ds.type = 'text/javascript';ds.async = true;
-						ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-						ds.charset = 'UTF-8';
-						(document.getElementsByTagName('head')[0] 
-						 || document.getElementsByTagName('body')[0]).appendChild(ds);
-					})();
-				</script>
-			</div>
 	    </div>
 	</section>
 	<!-- ========================= END Content ========================= -->
 	<!-- ============================ Footer =========================== -->
 	<footer id="footer">
 	    <div class="container">
-	            <div class="copy">
-	                <p>
-	                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By HNYYGHK. All Rights Reserved.<br />Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a>,Thanks.<br />
-						<span id="busuanzi_container_site_uv" style='display:none'>您是光临本站的第<span id="busuanzi_value_site_uv"></span>个小伙伴</span>
-					</p>
-	            </div>
-
-	            <div class="social">
-	                <ul>
-	                    <li><a href="https://github.com/HNYYGHK" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
-	                    <li><a href="https://twitter.com/HNYYGHK/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
-	                    <li><a href="https://www.facebook.com/people/Hongkang-Ge/100011804948029" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
-	                    <li><a href="http://weibo.com/CodingCockroach" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
-	                </ul>
-	            </div>
-	            <div class="clearfix"> </div>
-	        </div>
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By HNYYGHK. All Rights Reserved.<br />Theme By <a target="_blank" rel="noopener" href="https://go.kieran.top" style="color: #767D84">Kieran</a>,Thanks.<br />
+                    <span id="busuanzi_container_site_uv">您是光临本站的第<span id="busuanzi_value_site_uv"></span>个小伙伴</span>
+                </p>
+            </div>
+            <div class="social">
+                <ul>
+                    <li><a href="https://github.com/HNYYGHK" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    <li><a href="https://twitter.com/HNYYGHK/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    <li><a href="https://www.facebook.com/people/Hongkang-Ge/100011804948029" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    <li><a href="http://weibo.com/CodingCockroach" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
 	</footer>
+	<!-- 不蒜子访问量统计 -->
+	<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 	<!-- ============================ END Footer =========================== -->
 	<!-- =============================== About ============================= -->
 	<div id="bgabout"></div>
@@ -480,19 +466,23 @@
 	    });
 	</script>
 	<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
-	<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
 	<script src="/js/scripts.js"></script><!-- Theme scripts -->
 
-	<!-- Initiate flexslider plugin -->
+	<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+	<script src="/fancybox/jquery.fancybox.pack.js"></script>
 	<script type="text/javascript">
-	    $(document).ready(function($) {
-	      $('.flexslider').flexslider({
-	        animation: "fade",
-	        prevText: "",
-	        nextText: "",
-	        directionNav: true
-	      });
-	    });
+	$('#intro').find('img').each(function(){
+	  var alt = this.alt;
+
+	  if (alt){
+		$(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+	  }
+
+	  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+	});
+	(function($){
+	  $('.fancybox').fancybox();
+	})(jQuery);
 	</script>
 
 	<!-- DIV CSS遮罩 -->
@@ -530,51 +520,5 @@
 	            document.getElementById("ascrail2000").style.display ="block";
 	        }
 	</script>
-
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	  var duoshuoQuery = {short_name:"CodingCockroach"};
-	  (function() {
-	    var ds = document.createElement('script');
-	    ds.type = 'text/javascript';ds.async = true;
-	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-	    ds.charset = 'UTF-8';
-	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-	    ds = document.createElement('script');
-	    ds.type = 'text/javascript';ds.async = true;
-	    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//faisalman.github.io/ua-parser-js/src/ua-parser.js';
-	    ds.charset = 'UTF-8';
-	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-	  })();
-	</script>
-	<!-- 多说公共JS代码 end -->
-	<script src="/js/embed-15.11.15.0.min.js"></script>
-	<script src="/js/ua-parser.min.js"></script>
-	<!-- 多说 ua-parser-js start -->
-	<script type="text/javascript">
-	  if (typeof DUOSHUO !== 'undefined')hookDUOSHUO_tp();
-	  else $('[src="/js/embed-15.11.15.js"]')[0].onload=hookDUOSHUO_tp;
-	  function hookDUOSHUO_tp(){
-	    var _D_post=DUOSHUO.templates.post
-	    DUOSHUO.templates.post=function (e,t){
-	      var rs=_D_post(e,t);
-	      if(e.post.agent&&/^Mozilla/.test(e.post.agent))rs=rs.replace(/<\/div><p>/,show_ua(e.post.agent)+'</div><p>');
-	      return rs;
-	    }
-	  }
-	  function show_ua(string){
-	    console.log(string);
-	    $.ua.set(string);
-	    var sua=$.ua;
-	    if(sua.os.version=='x86_64')sua.os.version='x64';
-	    return '<span class="this_ua browser '+sua.browser.name+'">'+sua.browser.name+' | '+sua.browser.version+'</span>'+'<span class="this_ua platform '+sua.os.name+'">'+sua.os.name+' '+sua.os.version+'</span>';
-	  }
-	</script>
-	<!-- 多说 ua-parser-js end -->
-
-	<!-- 不蒜子访问量统计 -->
-	<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-	</script>
-
 </body>
 </html>
